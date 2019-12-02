@@ -2,10 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebDriverUniversityTest.Pages
 {
@@ -39,7 +36,8 @@ namespace WebDriverUniversityTest.Pages
         //Button Dialog Invocation ===========================================================================================
         private ButtonDialog GetCurrentDialog()
         {
-            IWebElement wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(".modal.fade.in.show")));
+            IWebElement wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5))
+                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(".modal.fade.in.show")));
             return new ButtonDialog(wait);
         }
 

@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebDriverUniversityTest.IFrames;
 
 namespace WebDriverUniversityTest.Pages
@@ -36,9 +31,10 @@ namespace WebDriverUniversityTest.Pages
             return new ButtonsPage(driver);
         }
 
-        public void ClickToDoList()
+        public ToDoListPage ClickToDoList()
         {
             driver.FindElement(By.CssSelector("#to-do-list .thumbnail")).Click();
+            return new ToDoListPage(driver);
         }
 
         public void ClickPageObjectModel()
