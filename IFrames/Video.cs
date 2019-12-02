@@ -10,16 +10,16 @@ namespace WebDriverUniversityTest.IFrames
     class Video
     {
         protected IWebElement element;
-        //Constructor=========================================================================================================
+        //Constructor ========================================================================================================
         public Video(IWebElement element)
         {
             this.element = element;
         }
 
-        //Iframe Functionalities==============================================================================================
-        public void ClickPlayButton()
+        //Iframe Functionalities =============================================================================================
+        public void PlayOrPauseVideo()
         {
-            
+            element.FindElement(By.ClassName("vp-video")).Click();
         }
     }
 }

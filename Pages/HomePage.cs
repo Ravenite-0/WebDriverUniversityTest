@@ -10,16 +10,16 @@ namespace WebDriverUniversityTest.Pages
 {
     class HomePage : BasePage
     {
-        //Constructor=========================================================================================================
+        //Constructor ========================================================================================================
         public HomePage(IWebDriver driver) : base(driver) { }
 
-        //IFrame==============================================================================================================
+        //IFrame =============================================================================================================
         public Video LoadHomePageVideoIFrame()
         {
             return new Video(driver.FindElement(By.Id("udemy-promo-thumbnail")));
         }
 
-        //Navigation to pages=================================================================================================
+        //Navigation to pages ================================================================================================
         public void ClickContactUs()
         {
             driver.FindElement(By.CssSelector("#contact-us .thumbnail")).Click();
@@ -30,9 +30,10 @@ namespace WebDriverUniversityTest.Pages
             driver.FindElement(By.CssSelector("#login-portal .thumbnail")).Click();
         }
 
-        public void ClickButtonClicks()
+        public ButtonsPage ClickButtonClicks()
         {
             driver.FindElement(By.CssSelector("#button-clicks .thumbnail")).Click();
+            return new ButtonsPage(driver);
         }
 
         public void ClickToDoList()
