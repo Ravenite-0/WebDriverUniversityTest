@@ -19,7 +19,6 @@ namespace WebDriverUniversityTest.Tests
             PageObjectModelPage pomPage = new HomePage(driver).ClickPageObjectModel();
 
             Assert.AreEqual(title, pomPage.ClickPomProducts().GetPomDialog(pomPage.ClickPomProducts().FindProduct("Cameras")).GetTitle());
-
         }
 
     }

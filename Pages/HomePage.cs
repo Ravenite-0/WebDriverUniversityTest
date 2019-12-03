@@ -44,9 +44,10 @@ namespace WebDriverUniversityTest.Pages
             return new PageObjectModelPage(driver);
         }
 
-        public void ClickAccordion()
+        public AccordionPage ClickAccordion()
         {
-            driver.FindElement(By.CssSelector("[href = 'Accordion/index.html'].thumbnail")).Click();
+            driver.FindElement(By.CssSelector("[href='Accordion/index.html'] .thumbnail")).Click();
+            return new AccordionPage(driver);
         }
 
         public void ClickDropdownCheckboxRadio()
