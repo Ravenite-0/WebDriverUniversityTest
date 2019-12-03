@@ -15,9 +15,10 @@ namespace WebDriverUniversityTest.Pages
         }
 
         //Navigation to pages ================================================================================================
-        public void ClickContactUs()
+        public ContactUsPage ClickContactUs()
         {
             driver.FindElement(By.CssSelector("#contact-us .thumbnail")).Click();
+            return new ContactUsPage(driver);
         }
 
         public void ClickLoginPortal()
@@ -37,9 +38,10 @@ namespace WebDriverUniversityTest.Pages
             return new ToDoListPage(driver);
         }
 
-        public void ClickPageObjectModel()
+        public PageObjectModelPage ClickPageObjectModel()
         {
             driver.FindElement(By.CssSelector("#page-object-model .thumbnail")).Click();
+            return new PageObjectModelPage(driver);
         }
 
         public void ClickAccordion()
