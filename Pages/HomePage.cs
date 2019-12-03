@@ -50,9 +50,10 @@ namespace WebDriverUniversityTest.Pages
             return new AccordionPage(driver);
         }
 
-        public void ClickDropdownCheckboxRadio()
+        public DropdownCheckboxRadioPage ClickDropdownCheckboxRadio()
         {
             driver.FindElement(By.CssSelector("#dropdown-checkboxes-radiobuttons .thumbnail")).Click();
+            return new DropdownCheckboxRadioPage(driver);
         }
 
         public void ClickAjaxLoader()
