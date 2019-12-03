@@ -15,22 +15,22 @@ namespace WebDriverUniversityTest.Pages
         }
 
         //Dropdown Methods ===================================================================================================
-        public void SetDropdownOne(int list,String selection)
+        public void SetDropdown(int list, String selection)
         {
             SelectElement dropdown = new SelectElement(driver.FindElement(By.Id("dropdowm-menu-" + list)));
             try { dropdown.SelectByValue(selection.ToLower()); }
             catch { throw new System.ArgumentException("Option " + selection + " not found in dropbox No." + list); }
         }
 
-        public String GetCurrentDropdownSelection(int list)
+        public String GetDropdown(int list)
         {
-            return driver.FindElement(By.Id("dropdowm-menu-" + list)).Text;
+            return new SelectElement(driver.FindElement(By.Id("dropdowm-menu-" + list))).SelectedOption.Text;
         }
 
         //Checkbox Methods ===================================================================================================
-        public void ChangeCheckbox(params int[] options)
+        public void SetCheckbox(params int[] options)
         {
-            foreach (int option in options) 
+            foreach (int option in options)
             {
                 try { driver.FindElement(By.CssSelector("#checkboxes input[value='option-" + option + "']")).Click(); }
                 catch { throw new System.ArgumentException("Option " + option + " not found!"); }
@@ -40,12 +40,12 @@ namespace WebDriverUniversityTest.Pages
         public String GetSelectedCheckbox()
         {
             List<String> checkedcheckboxes = new List<String>();
-            IList<IWebElement> checkboxes = driver.FindElements(By.CssSelector("#checkboxes [type='checkbox']"));
+            IList<IWebElement> checkboxes = driver.FindElements(By.CssSelector("#checkboxes label"));
             foreach (IWebElement checkbox in checkboxes)
             {
-                if (checkbox.Selected)
+                if (checkbox.FindElement(By.CssSelector("input[type='checkbox']")).Selected)
                 {
-                    checkedcheckboxes.Add(checkbox.Text);
+                    checkedcheckboxes.Add(checkbox.GetAttribute("innerText"));
                 }
 
             }
@@ -60,18 +60,56 @@ namespace WebDriverUniversityTest.Pages
             }
         }
 
-
         //Radio Methods ======================================================================================================
-        public void SelectRadioOptions(String option)
+        public void SetRadio(String option)
         {
-            try { driver.FindElement(By.CssSelector("#radio-buttons input[value='" + option.ToLower() + "']")); }
+            try { driver.FindElement(By.CssSelector("#radio-buttons input[value='" + option.ToLower() + "']")).Click(); }
             catch { throw new System.ArgumentException("Option " + option + " not found!"); }
         }
 
-        //Disabled options methods ===========================================================================================
-        public void DisableRadioButton(String option)
+        public String GetSelectedRadio()
         {
-            //TBC
+            IList<IWebElement> radios = driver.FindElements(By.CssSelector("#radio-buttons input[type='radio']"));
+            foreach (IWebElement radio in radios)
+            {
+                if (radio.Selected)
+                {
+                    string selectedradio = radio.GetAttribute("value").ToLower();
+                    return selectedradio.Substring(0, 1).ToUpper() + selectedradio.Substring(1);
+                }
+            }
+
+            throw new System.ArgumentException("None of the options are selected!");
+        }
+
+        //Disabled options methods ===========================================================================================
+        public String GetDisabledRadio()
+        {
+                IList<IWebElement> radios = driver.FindElements(By.CssSelector("#radio-buttons-selected-disabled input[type='radio']"));
+                foreach (IWebElement radio in radios)
+                {
+                    if (!radio.Enabled)
+                    {
+                        string disabledradio = radio.GetAttribute("value").ToLower();
+                        return disabledradio.Substring(0, 1).ToUpper() + disabledradio.Substring(1);
+                    }
+                }
+
+                throw new System.ArgumentException("None of the options are disabled!");
+        }
+
+        public String GetDisabledDropdown()
+        {
+            IList<IWebElement> options = driver.FindElements(By.CssSelector("#fruit-selects option"));
+
+            foreach (IWebElement option in options)
+            {
+                if (!option.Enabled)
+                {
+                    return option.Text;
+                }
+            }
+            throw new System.ArgumentException("None of the options are disabled!");
         }
     }
 }

@@ -35,7 +35,9 @@ namespace WebDriverUniversityTest.ListItem
             new WebDriverWait(driver, TimeSpan.FromSeconds(5))
                 .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.TagName("i")));
             driver.FindElement(By.XPath("//*[contains(text(),'" + this.GetTaskName() +"')]")).FindElement(By.CssSelector(".fa-trash")).Click();
-            
+            new WebDriverWait(driver, TimeSpan.FromSeconds(5))
+                .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//*[contains(text(),'" + this.GetTaskName() + "')]")));
+
             return;
         }
     }
