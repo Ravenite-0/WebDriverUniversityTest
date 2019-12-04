@@ -56,9 +56,10 @@ namespace WebDriverUniversityTest.Pages
             return new DropdownCheckboxRadioPage(driver);
         }
 
-        public void ClickAjaxLoader()
+        public AjaxPage ClickAjaxLoader()
         {
             driver.FindElement(By.CssSelector("#ajax-loader .thumbnail")).Click();
+            return new AjaxPage(driver);
         }
 
         public void ClickPopUpAlerts()
