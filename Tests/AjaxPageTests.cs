@@ -15,7 +15,7 @@ namespace WebDriverUniversityTest.Tests
         [Test]
         public void AjaxDialogTest()
         {
-            AjaxDialog ajaxDialog = new HomePage(driver).ClickAjaxLoader().clickButton();
+            AjaxDialog ajaxDialog = new HomePage(driver).ClickAjaxLoader().ClickButton();
             Assert.AreEqual("Well Done For Waiting....!!!", ajaxDialog.GetTitle());
         }
 

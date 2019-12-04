@@ -62,6 +62,12 @@ namespace WebDriverUniversityTest.Pages
             return new AjaxPage(driver);
         }
 
+        public ActionsPage ClickActions()
+        {
+            driver.FindElement(By.CssSelector("#actions .thumbnail")).Click();
+            return new ActionsPage(driver);
+        }
+
         public void ClickPopUpAlerts()
         {
             driver.FindElement(By.CssSelector("#popup-alerts .thumbnail")).Click();

@@ -18,7 +18,7 @@ namespace WebDriverUniversityTest.Pages
         }
 
         //Page Methods =======================================================================================================
-        public AjaxDialog clickButton()
+        public AjaxDialog ClickButton()
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(10))
                    .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("myDiv")));

@@ -73,6 +73,7 @@
     <Compile Include="Page Object Model\PomProduct.cs" />
     <Compile Include="Page Object Model\PomProductsPage.cs" />
     <Compile Include="Pages\AccordionPage.cs" />
+    <Compile Include="Pages\ActionsPage.cs" />
     <Compile Include="Pages\AjaxPage.cs" />
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\ButtonsPage.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Pages\PageObjectModelPage.cs" />
     <Compile Include="Pages\ToDoListPage.cs" />
     <Compile Include="Tests\AccordionPageTests.cs" />
+    <Compile Include="Tests\ActionsPageTests.cs" />
     <Compile Include="Tests\AjaxPageTests.cs" />
     <Compile Include="Tests\BaseTestSuite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -109,6 +109,7 @@ namespace WebDriverUniversityTest.Pages
                     return option.Text;
                 }
             }
+
             throw new System.ArgumentException("None of the options are disabled!");
         }
     }
