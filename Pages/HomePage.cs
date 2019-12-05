@@ -73,9 +73,10 @@ namespace WebDriverUniversityTest.Pages
             driver.FindElement(By.CssSelector("#popup-alerts .thumbnail")).Click();
         }
 
-        public void ClickIFrame()
+        public IFramePage ClickIFrame()
         {
             driver.FindElement(By.CssSelector("#iframe .thumbnail")).Click();
+            return new IFramePage(driver);
         }
 
         public void ClickHiddenElements()

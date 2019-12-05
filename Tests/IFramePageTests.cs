@@ -10,18 +10,20 @@ using WebDriverUniversityTest.Pages;
 namespace WebDriverUniversityTest.Tests
 {
     [TestFixture]
-    class PageObjectModelPageTests : BaseTestSuite
+    class IFramePageTests : BaseTestSuite
     {
         [Test]
-        public void TestProductTitle()
+        public void TestFrameOperations()
         {
             String title = "SPECIAL OFFER! - GET 30% OFF YOUR FIRST ORDER AT WEBDRIVERUNIVERSITY.COM";
 
-            PomProductsPage prodPage = new HomePage(driver).ClickPageObjectModel().ClickPomProducts();
+            IFramePage iFramePage = new HomePage(driver).ClickIFrame();
 
-            PomProduct pomProduct = prodPage.FindProduct("Cameras");
+            PageObjectModelPage pomPage = iFramePage.SwitchFrame();
+            
+            PomProduct pomProduct = pomPage.ClickPomProducts().FindFramesProduct("Cameras");
 
-            Assert.AreEqual(title, prodPage.GetPomDialog(pomProduct).GetTitle());
+            Assert.AreEqual(title, pomPage.ClickPomProducts().GetPomDialog(pomProduct).GetTitle());
         }
 
     }

@@ -26,9 +26,19 @@ namespace WebDriverUniversityTest.Page_Object_Model
 
         public PomProduct FindProduct(String productName)
         {
-            IList<IWebElement> products = driver.FindElements(By.CssSelector("[data-toggle='modal']"));
+            IList<IWebElement> products = driver.FindElements(By.XPath("//div[@data-toggle='modal']"));
             foreach (IWebElement product in products) {
-                PomProduct pomProduct = new PomProduct(product);
+                PomProduct pomProduct = new PomProduct(product, driver);
+                if(pomProduct.GetProductName().Equals(productName)) { return pomProduct; }
+            }
+            throw new System.ArgumentException("Product " + productName + " not found!");
+        }
+
+        public PomProduct FindFramesProduct(String productName)
+        {
+            IList<IWebElement> products = driver.FindElements(By.XPath("//div[@data-toggle='modal']"));
+            foreach (IWebElement product in products) {
+                PomProduct pomProduct = new PomProduct(product, driver);
                 if(pomProduct.GetProductName().Equals(productName)) { return pomProduct; }
             }
             throw new System.ArgumentException("Product " + productName + " not found!");

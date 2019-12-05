@@ -26,7 +26,7 @@ namespace WebDriverUniversityTest.Pages
         public PomProductsPage ClickPomProducts()
         {
             driver.FindElement(By.CssSelector(".navbar [href='products.html']")).Click();
-            return new PomProductsPage(driver);
+            return new PomProductsPage(driver.SwitchTo().Frame(driver.FindElement(By.Id("frame"))));
         }
 
         public ContactUsPage ClickPomContact()
